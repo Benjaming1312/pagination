@@ -1,0 +1,42 @@
+.ptrans-in.pshow {
+    opacity: 1;
+    transform: translateX(0vw)
+}
+
+.phidden {
+    display: none
+}
+.pagination-wrapper{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap
+}
+.pagination-wrapper > a{
+    padding: 6px 12px;
+}
+.pagination{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.pagination>li{
+    display: inline-block;
+    padding: 0;
+}
+.ptrans-in {
+    visibility: visible;
+    -webkit-transition: .6s ease;
+    -moz-transition: .6s ease;
+    transition: .6s ease;
+    opacity: 1;
+    display: block;
+    opacity: 0;
+    transform: translateX(10vw)
+}
+
+.ptrans-out {
+    visibility: hidden;
+    -webkit-transition: .6s ease;
+    -moz-transition: .6s ease;
+    transition: .6s ease;
+    transform: translateX(-10vw)
+}
