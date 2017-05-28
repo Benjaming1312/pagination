@@ -4,7 +4,7 @@
 
 <p><br></p>
 <h3>範例網址</h3>
-<p><a href="https://codepen.io/benjaming1312/pen/aWGjpX" target="_blank">範例</a>
+<p><a href="https://benjaming1312.github.io/pagination/" target="_blank">範例</a>
 <br>
 <br></p>
 <h3>使用到的元件</h3>
