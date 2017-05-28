@@ -31,7 +31,7 @@ jQuery.fn.bcpagein = function (options){
 
     var pagination = $('<div class="pagination-wrapper"></div>')
     $(this).after(pagination)
-    $(pagination).append('<a href="#" class="prev">prev</a> <ul class="pagination list-inline"></ul> <a href="#" class="next">next</a>')
+    $(pagination).append('<a type="button" class="prev">prev</a> <ul class="pagination list-inline"></ul> <a type="button" class="next">next</a>')
     // 頁數的數字
     for (i = 0; i < currentpage; i++) {
         $('ul.pagination').append('<li>' + '<a style="cursor: pointer;" data-pages='+ (i + 1) + '>' + (i + 1) + '</a>' + '</li>')
@@ -43,63 +43,63 @@ jQuery.fn.bcpagein = function (options){
     }
 
     // 頁數列表
-    $('ul.list-inline li').hide()
+    $('ul.pagination.list-inline li').hide()
     for (l = 1; l < (pagelistshow + 1); l++) {
-        $('ul.list-inline li:nth-child(' + l + ')').show()
+        $('ul.pagination.list-inline li:nth-child(' + l + ')').show()
     }
 
     // 下一組頁數
-    $('.next').click(function () {
-        $('ul.list-inline li').hide()
+    $('.pagination-wrapper .next').click(function () {
+        $('ul.pagination.list-inline li').hide()
 
         // 頁數列表第一個自動點擊
         var showa = pagelistshow + 1
-        $('ul.list-inline li:nth-child(' + showa + ') a').click()
+        $('ul.pagination.list-inline li:nth-child(' + showa + ') a').click()
 
         pagelistshow = parseInt(pagelistshow) + 5
         // 當頁數切換過頭，鎖定在最後一頁
         if (pagelistshow >= currentpage) {
             pagelistshow = Math.ceil((currentpage / 5)) * 5
             for (l = (pagelistshow - 5) + 1; l < ((pagelistshow)); l++) {
-                $('ul.list-inline li:nth-child(' + l + ')').show()
+                $('ul.pagination.list-inline li:nth-child(' + l + ')').show()
             }
         } else {
             pagelistshow = pagelistshow
             for (l = (pagelistshow - 5) + 1; l < ((pagelistshow) + 1); l++) {
-                $('ul.list-inline li:nth-child(' + l + ')').show()
+                $('ul.pagination.list-inline li:nth-child(' + l + ')').show()
             }
         }
 
     })
 
     // 上一組頁數
-    $('.prev').click(function () {
-        $('ul.list-inline li').hide()
+    $('.pagination-wrapper .prev').click(function () {
+        $('ul.pagination.list-inline li').hide()
 
         pagelistshow = parseInt(pagelistshow) - 5
 
         // 頁數列表第一個自動點擊
         var showa = pagelistshow
-        console.log(showa)
-        $('ul.list-inline li:nth-child(' + showa + ') a').click()
+        $('ul.pagination.list-inline li:nth-child(' + showa + ') a').click()
 
         // 頁數切換過頭，鎖定在第一頁
         if (pagelistshow <= 5) {
             pagelistshow = 5
             for (l = 0; l < ((pagelistshow) + 1); l++) {
-                $('ul.list-inline li:nth-child(' + l + ')').show()
+                $('ul.pagination.list-inline li:nth-child(' + l + ')').show()
             }
         } else {
             for (l = (pagelistshow - 5) + 1; l < ((pagelistshow) + 1); l++) {
-                $('ul.list-inline li:nth-child(' + l + ')').show()
+                $('ul.pagination.list-inline li:nth-child(' + l + ')').show()
             }
         }
     })
 
     // 頁數被點擊後的動作
-    $('ul.list-inline li a').click(function (e) {
-
-        $('ul.list-inline li').removeClass('active')
+    $('ul.pagination.list-inline li a').click(function (e) {
+        e.stopPropagation()
+        e.preventDefault()
+        $('ul.pagination.list-inline li').removeClass('active')
         // 點擊的上色
         $(this).parent('li').addClass('active')
 
